@@ -23,7 +23,10 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from urllib import parse
+try:
+    from urllib import parse
+except ImportError:
+     from urlparse import urlparse as parse
 from uuid import uuid4
 
 import daiquiri
