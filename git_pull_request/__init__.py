@@ -23,6 +23,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import distutils.spawn
 try:
     from urllib import parse
 except ImportError:
@@ -260,7 +261,7 @@ def download_pull_request(g, repo, target_remote, pull_number):
 
 
 def edit_file_get_content_and_remove(filename):
-    editor = os.getenv("EDITOR")
+    editor = os.getenv("EDITOR") or distutils.spawn.find_executable("vi")
     if not editor:
         LOG.warning(
             "$EDITOR is unset, you will not be able to edit the "
