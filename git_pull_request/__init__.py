@@ -26,7 +26,7 @@ import tempfile
 try:
     from urllib import parse
 except ImportError:
-     from urlparse import urlparse as parse
+     from urlparse import urlparse
 from uuid import uuid4
 
 import daiquiri
@@ -101,7 +101,7 @@ def get_github_hostname_user_repo_from_url(url):
     :param url: The URL to parse
     :return: hostname, user, repository
     """
-    parsed = parse.urlparse(url)
+    parsed = urlparse(url)
     if parsed.netloc == '':
         # Probably ssh
         host, sep, path = parsed.path.partition(":")
