@@ -331,7 +331,7 @@ def fork_and_push_pull_request(g, repo_to_fork, rebase, target_remote,
     repo_forked = g_user.create_fork(repo_to_fork)
     LOG.info("Forked repository: %s", repo_forked.html_url)
 
-    remote_to_push = git_remote_matching_url(repo_forked.clone_url)
+    remote_to_push = git_remote_matching_url(repo_forked.clone_url) or git_remote_matching_url(repo_forked.ssh_url)
 
     if remote_to_push:
         LOG.debug("Found forked repository already in remote as `%s'",
