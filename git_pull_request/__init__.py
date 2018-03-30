@@ -458,10 +458,10 @@ def main():
     parser.add_argument("--debug",
                         action='store_true',
                         help="Enabled debugging.")
-    parser.add_argument("--target-remote",
+    parser.add_argument("--target-remote", "-r",
                         help="Remote to send a pull-request to. "
                         "Default is auto-detected from .git/config.")
-    parser.add_argument("--target-branch",
+    parser.add_argument("--target-branch", "-b",
                         help="Branch to send a pull-request to. "
                         "Default is auto-detected from .git/config.")
     parser.add_argument("--title",
@@ -472,10 +472,10 @@ def main():
                         action="store_true",
                         help="Don't rebase branch before pushing.")
     parser.add_argument(
-        "--force-editor",
+        "--no-force-editor",
         action="store_true",
         default=False,
-        help="Force editor to run to edit pull-request message.")
+        help="Do not force editor to run to edit pull-request message.")
     parser.add_argument(
         "--no-comment-on-update",
         action="store_true",
@@ -487,7 +487,7 @@ def main():
         help="Comment to publish when updating the pull-request"
     )
     parser.add_argument(
-        "--no-tag-previous-revision",
+        "--no-tag-previous-revision", "-T",
         action="store_true",
         default=False,
         help="Preserve older revision when pushing"
@@ -513,7 +513,7 @@ def main():
             comment_on_update=not args.no_comment_on_update,
             comment=args.comment,
             rebase=not args.no_rebase,
-            force_editor=args.force_editor,
+            force_editor=not args.no_force_editor,
             download=args.download,
             ignore_tag=args.no_tag_previous_revision
         )
