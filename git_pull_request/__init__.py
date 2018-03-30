@@ -25,9 +25,9 @@ import sys
 import tempfile
 import distutils.spawn
 try:
-    from urllib import parse
+    from urllib.parse import urlparse
 except ImportError:
-     from urlparse import urlparse
+    from urlparse import urlparse
 from uuid import uuid4
 
 import daiquiri
